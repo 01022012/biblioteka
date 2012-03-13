@@ -41,3 +41,7 @@ group :test do
   gem 'shoulda'
 end
 
+group :development, :test do
+  gem 'jasminerice'
+end
+
