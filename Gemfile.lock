@@ -7,6 +7,13 @@ GIT
       activemodel (>= 3.0)
 
 GIT
+  remote: git://github.com/rails/pjax_rails.git
+  revision: 2e024b24de958c85ae45aa9cd79870f998a8eccb
+  specs:
+    pjax_rails (0.1.7)
+      jquery-rails
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 2b119e7a83f34202b6ea7f61cd3da59b170ebdd8
   branch: static
@@ -169,6 +176,7 @@ DEPENDENCIES
   jquery-rails
   json
   pg
+  pjax_rails!
   rails (= 3.1.1)
   sass-rails (~> 3.1.4)
   shoulda

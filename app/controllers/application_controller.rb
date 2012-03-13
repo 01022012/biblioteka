@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   
   before_filter :authorize
   
+  protected 
+  
+  def pjax_layout
+    'pjax'
+  end
+  
   private
   
   def current_user

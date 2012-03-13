@@ -5,7 +5,7 @@ $(function() {
   
   searchField.attr('placeholder', 'Search by '+$(checkedRadio).val());
   
-  $('.query-by').click(function() {
+  $('.query-by').live('click', function() {
     var value = $(this).val();
     searchField.attr('placeholder', 'Search by '+value);
     if (searchField.val() !== '') {
@@ -13,7 +13,7 @@ $(function() {
     }
   });
   
-  searchForm.on('ajax:success', function(evt, data, status, xhr) {
+  searchForm.live('ajax:success', function(evt, data, status, xhr) {
     $('#book-list').html(data);
   });
   
