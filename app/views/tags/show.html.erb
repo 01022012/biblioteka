@@ -1,0 +1,3 @@
+<h1>Books tagged with <%= @tag.name %></h1>
+
+<%= render partial: 'books/list', locals: {books: @tag.books} %>

@@ -17,7 +17,7 @@ class BooksController < ApplicationController
       else                Book.search_by_title(params[:query])
     end
     if request.xhr?
-      render partial: 'list'
+      render partial: 'list', locals: {books: @books}
     else
       render action: :index
     end

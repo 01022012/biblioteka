@@ -1,6 +1,6 @@
-<% if @books.size > 0 %>
+<% if books.size > 0 %>
   <dl>
-  <% @books.each do |book| %>
+  <% books.each do |book| %>
     <dt><%= link_to book.title, book_path(book) %></dt>
     <dd><%= book.authors %></dd>
   <% end %>

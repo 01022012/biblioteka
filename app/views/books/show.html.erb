@@ -1,33 +1,53 @@
 <h1><%= @book.title %></h1>
 
-<div id="reservation-status">
-  <%= render partial: "reservation_status", locals: {reservation: @book_reservation} %>
+<div class="row">
+  <div class="span7">
+    <p>
+    	by <%= @book.authors %>
+    </p>
+
+    <p>
+    	ISBN: <%= @book.isbn %>
+    </p>
+
+    <div id="taggings-container">
+      Tags:
+      <span id="taggings">
+        <%= render @book.tags %>
+      </span>
+      
+      <a href="#" id="new-tag-link" data-skip-pjax>
+        <i class="icon-plus"></i>
+        New tag
+      </a>
+      
+      <%= form_tag book_tags_path(@book), id: 'new-tag-form', remote: true, data: {type: :json} do %>
+        <%= text_field_tag :name, "", id: 'new-tag-name', placeholder: 'Enter tag name', style: 'display: none;' %>
+      <% end %>
+      
+    </div>
+    
+    <p>
+    	<%= @book.description %>
+    </p>
+
+    <%= link_to "Edit", edit_book_path(@book), class: 'btn' %>
+    <%= link_to "Delete", book_path, method: :delete, class: 'btn btn-danger', confirm: 'Are you sure?' %>
+
+  </div>
+  <div class="span4 well">
+    <h2>Reservation</h2>
+    <div id="reservation-status">
+      <%= render partial: "reservation_status", locals: {reservation: @book_reservation} %>
+    </div>
+    <span id="reservation-links">
+      <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
+    </span>
+  </div>
 </div>
+  
 
-<p>
-	by <%= @book.authors %>
-</p>
-
-<p>
-	ISBN: <%= @book.isbn %>
-</p>
-
-<p>
-	<%= @book.description %>
-</p>
-
-<%= link_to "Edit", edit_book_path(@book), class: 'btn' %>
-
-<span id="reservation-links">
-  <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
-</span>
-
-<%= link_to "Delete", book_path, method: :delete, class: 'btn btn-danger', confirm: 'Are you sure?' %>
 
 <p>
   <%= link_to "Back to list", books_path %>
 </p>
-
-
-<div id="reservation-form" style="display: none;">
-</div>
