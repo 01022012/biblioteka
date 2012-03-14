@@ -20,10 +20,12 @@ class GoogleBooksClient
     if result["totalItems"] > 0
       item = result["items"].first
       volume_info = item["volumeInfo"]
+      image_links = volume_info["imageLinks"] || {}
       return Book.new(title: volume_info["title"],
                       description: volume_info["description"],
                       authors: volume_info["authors"].join(", "),
-                      isbn: volume_info["industryIdentifiers"][0]["identifier"])
+                      isbn: volume_info["industryIdentifiers"][0]["identifier"],
+                      cover_url: image_links["thumbnail"])
     else
       return nil
     end

@@ -2,30 +2,40 @@
 
 <div class="row">
   <div class="span7">
-    <p>
-    	by <%= @book.authors %>
-    </p>
+    
+    <div class="row book-meta">
+      <div class="span2">
+        <%= image_tag(@book.cover_url) if @book.cover_url %>
+      </div>
+      <div class="span5">
+        <p>
+        	by <%= @book.authors %>
+        </p>
 
-    <p>
-    	ISBN: <%= @book.isbn %>
-    </p>
+        <p>
+        	ISBN: <%= @book.isbn %>
+        </p>
 
-    <div id="taggings-container">
-      Tags:
-      <span id="taggings">
-        <%= render @book.tags %>
-      </span>
-      
-      <a href="#" id="new-tag-link" data-skip-pjax>
-        <i class="icon-plus"></i>
-        New tag
-      </a>
-      
-      <%= form_tag book_tags_path(@book), id: 'new-tag-form', remote: true, data: {type: :json} do %>
-        <%= text_field_tag :name, "", id: 'new-tag-name', placeholder: 'Enter tag name', style: 'display: none;' %>
-      <% end %>
-      
+        <div id="taggings-container">
+          Tags:
+          <span id="taggings">
+            <%= render @book.tags %>
+          </span>
+
+          <a href="#" id="new-tag-link" data-skip-pjax>
+            <i class="icon-plus"></i>
+            New tag
+          </a>
+
+          <%= form_tag book_tags_path(@book), id: 'new-tag-form', remote: true, data: {type: :json} do %>
+            <%= text_field_tag :name, "", id: 'new-tag-name', placeholder: 'Enter tag name', style: 'display: none;' %>
+          <% end %>
+
+        </div>
+      </div>
     </div>
+    
+
     
     <p>
     	<%= @book.description %>

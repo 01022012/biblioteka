@@ -39,6 +39,7 @@ class GoogleBooksClientTest < ActiveSupport::TestCase
       assert_match  /Rails/, book.description
       assert_equal "Sam Ruby, Dave Thomas, David Heinemeier Hansson, Leon Breedt", book.authors
       assert_equal "1934356549", book.isbn
+      assert_match /http/, book.cover_url
     end
     
   end
