@@ -12,6 +12,7 @@ gem 'heroku'
 gem 'execjs'
 gem 'therubyracer'
 gem 'jquery-rails'
+gem 'pjax_rails', :git => 'git://github.com/rails/pjax_rails.git'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
 gem 'json'
 gem 'isbn_validator', :git => 'git://github.com/Eficode/isbn_validator.git'
@@ -38,5 +39,9 @@ group :test do
   gem 'factory_girl_rails'
   gem 'guard-test'
   gem 'shoulda'
+end
+
+group :development, :test do
+  gem 'jasminerice'
 end
 

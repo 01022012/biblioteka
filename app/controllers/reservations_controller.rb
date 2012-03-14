@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
       flash[:notice] = "Book reserved"
       respond_to do |format|
         format.html { redirect_to book_path(@book) }
-        format.js
+        format.json { render json: @reservation.to_json(include: :user) }
       end
     else
       render :new

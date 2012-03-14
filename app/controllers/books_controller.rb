@@ -16,7 +16,11 @@ class BooksController < ApplicationController
       when 'authors' then Book.search_by_authors(params[:query])
       else                Book.search_by_title(params[:query])
     end
-    render action: :index
+    if request.xhr?
+      render partial: 'list'
+    else
+      render action: :index
+    end
   end
   
   def show

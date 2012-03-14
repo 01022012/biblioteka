@@ -4,7 +4,7 @@ module BooksHelper
     checked = params[:by].blank? ? 
                     field.to_s == 'title' : params[:by] == field.to_s
     output = ""
-    output << (radio_button_tag :by, field, checked)
+    output << (radio_button_tag :by, field, checked, class: 'query-by')
     output << field.to_s.titleize
     content_tag(:span, raw(output))
   end
