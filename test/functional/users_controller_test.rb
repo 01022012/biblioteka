@@ -12,12 +12,16 @@ class UsersControllerTest < ActionController::TestCase
     
     should "create a user when given valid parameters" do
       assert_difference "User.count", +1 do
-        post :create, user: {email: 'jane@company.com',
-                             password: 'catsanddogs',
-                             password_confirmation: 'catsanddogs'}
-        assert_response :redirect
-        assert_redirected_to root_path
-        assert flash[:notice]
+        assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+          post :create, user: {email: 'jane@company.com',
+                               password: 'catsanddogs',
+                               password_confirmation: 'catsanddogs'}
+          welcome_email = ActionMailer::Base.deliveries.last
+          assert_equal 'jane@company.com', welcome_email.to[0]
+          assert_response :redirect
+          assert_redirected_to root_path
+          assert flash[:notice]
+        end
       end
     end
     
