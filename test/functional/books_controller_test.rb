@@ -34,6 +34,27 @@ class BooksControllerTest < ActionController::TestCase
     assert assigns(:book).new_record?
   end
   
+  test "new book with ISBN" do
+    book_from_google = Book.new
+    GoogleBooksClient.expects(:get).with("1234").returns(book_from_google)
+    
+    get :new, isbn: "1234"
+    
+    assert_response :success
+    assert assigns(:book)
+    assert_equal book_from_google, assigns(:book)
+  end
+  
+  test "new book with ISBN when not found" do
+    GoogleBooksClient.expects(:get).with("1234").returns(nil)
+    
+    get :new, isbn: "1234"
+    
+    assert_response :success
+    assert assigns(:book)
+    assert flash[:error]
+  end
+  
   test "create book with valid parameters" do
     post :create, book: {title: 'Programming Your Home', authors: 'Mike Riley', isbn: '978-1-93435-690-6'}
     assert_response :redirect

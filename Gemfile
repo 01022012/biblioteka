@@ -39,6 +39,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'guard-test'
   gem 'shoulda'
+  gem 'mocha', :require => false
 end
 
 group :development, :test do

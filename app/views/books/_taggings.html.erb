@@ -1,0 +1,13 @@
+<div id="taggings-container">
+  Tags:
+  <span id="taggings">
+    <%= render @book.tags %>
+  </span>
+  <a href="#" id="new-tag-link" data-skip-pjax>
+    <i class="icon-plus"></i>
+    New tag
+  </a>
+  <%= form_for [@book, @new_tag], remote: true, data: {type: :json} do |f| %>
+    <%= f.text_field :name, placeholder: 'Enter tag name', style: 'display: none;' %>
+  <% end %>
+</div>

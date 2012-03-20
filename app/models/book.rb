@@ -6,9 +6,21 @@ class Book < ActiveRecord::Base
   validates_with IsbnValidator
   
   has_many :reservations
+  has_many :taggings
+  has_many :tags, through: :taggings
   
   def reservation
     self.reservations.where(state: 'reserved').first
+  end
+  
+  def tag_with(tag_name)
+    if tags.where(name: tag_name).empty?
+      tag = Tag.find_or_create_by_name(tag_name)
+      tags << tag
+      tag
+    else
+      nil
+    end
   end
   
   def self.search_by_isbn(value)

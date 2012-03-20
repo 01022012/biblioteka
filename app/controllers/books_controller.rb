@@ -17,7 +17,7 @@ class BooksController < ApplicationController
       else                Book.search_by_title(params[:query])
     end
     if request.xhr?
-      render partial: 'list'
+      render partial: 'list', locals: {books: @books}
     else
       render action: :index
     end
@@ -28,7 +28,15 @@ class BooksController < ApplicationController
   end
   
   def new
-    @book = Book.new
+    if params[:isbn]
+      @book = GoogleBooksClient.get(params[:isbn])
+      unless @book
+        flash[:error] = "No book found by that ISBN"
+        @book = Book.new
+      end
+    else
+      @book = Book.new
+    end
   end
   
   def create

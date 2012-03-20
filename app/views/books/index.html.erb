@@ -13,5 +13,5 @@
 </p>
 
 <div id="book-list">
-  <%= render 'list' %>
+  <%= render partial: 'list', locals: {books: @books} %>
 </div>

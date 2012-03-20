@@ -37,7 +37,15 @@
     <div class='control-group'>
       <label class='control-label' for="description">Description</label>
       <div class='controls'>
-        <%= f.text_field :description %>
+        <%= f.text_area :description %>
+      </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="description">Cover URL</label>
+      <div class='controls'>
+        <%= f.text_field :cover_url %>
       </div>
   </fieldset>
 
