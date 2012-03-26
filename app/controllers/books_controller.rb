@@ -31,7 +31,7 @@ class BooksController < ApplicationController
     if params[:isbn]
       @book = GoogleBooksClient.get(params[:isbn])
       unless @book
-        flash[:error] = t('flash.books.new.error')
+        set_flash_message(:error)
         @book = Book.new
       end
     else
@@ -42,7 +42,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save
-      flash[:notice] = t('flash.books.create.notice')
+      set_flash_message(:notice)
       redirect_to books_path
     else
       render action: :new
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
   
   def update
     if @book.update_attributes(params[:book])
-      flash[:notice] = t('flash.books.update.notice')
+      set_flash_message(:notice)
       redirect_to book_path(@book)
     else
       render action: :edit
@@ -63,7 +63,7 @@ class BooksController < ApplicationController
   
   def destroy
     @book.destroy
-    flash[:notice] = t('flash.books.destroy.notice')
+    set_flash_message(:notice)
     redirect_to books_path
   end
   

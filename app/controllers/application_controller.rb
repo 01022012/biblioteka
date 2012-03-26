@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     %w( en fi )
   end
   
+  # Sets i18n flash message
+  def set_flash_message(status, opts = {})
+    message = I18n.t("flash.#{controller_name}.#{action_name}.#{status.to_s}")
+    if message.present?
+      opts[:now] ? flash.now[status] = message : flash[status] = message
+    end
+  end
+  
   private
   
   def current_user
