@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
     @book = Book.find(params[:book_id])
     @reservation = @book.reservations.new(user: current_user)
     if @reservation.save
+      UserMailer.reservation_confirmation(current_user, @book).deliver
       flash[:notice] = "Book reserved"
       respond_to do |format|
         format.html { redirect_to book_path(@book) }

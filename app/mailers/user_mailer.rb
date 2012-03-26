@@ -6,5 +6,11 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => "#{user.email}", :subject => "Welcome to Library")
   end
+  
+  def reservation_confirmation(user, book)
+    @user = user
+    @book = book
+    mail(:to => "#{user.email}", :subject => "#{book.title} book reservation")
+  end
 
 end
