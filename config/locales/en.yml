@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  
+  books:
+    index:
+      search_button_placeholder: "Search by title"
