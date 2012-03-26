@@ -42,7 +42,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save
-      set_flash_message(:notice)
+      set_flash_message(:notice, {title: @book.title})
       redirect_to books_path
     else
       render action: :new

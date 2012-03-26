@@ -13,9 +13,9 @@ en:
       new:
         error: "No book found by that ISBN"
       create:
-        notice: "Book created"
+        notice: "'%{title}' book created"
       update:
         notice: "Book saved"
       destroy:
-        notice: "Book deleted"
+        notice: "Book deleted"        
     
