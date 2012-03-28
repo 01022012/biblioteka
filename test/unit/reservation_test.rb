@@ -13,7 +13,7 @@ class ReservationTest < ActiveSupport::TestCase
   
   should "not allow reservation if the book already reserved" do
     reservation = Factory(:reservation, state: 'reserved')
-    copy = Reservation.new(reservation.attributes)
+    copy = Factory.build(:reservation, reservation.attributes)
     assert !copy.save
     assert_match /book has been already reserved/, copy.errors[:book_id].join
   end
