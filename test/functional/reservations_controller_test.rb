@@ -12,10 +12,14 @@ class ReservationsControllerTest < ActionController::TestCase
   
   test "create reservation with valid parameters" do
     assert_difference("Reservation.count", +1) do
-      post :create, book_id: @book.id
-      assert_response :redirect
-      assert_redirected_to book_path(@book)
-      assert flash[:notice]
+      assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+        post :create, book_id: @book.id
+        reservation_email = ActionMailer::Base.deliveries.last
+        assert_equal @user.email, reservation_email.to[0]
+        assert_response :redirect
+        assert_redirected_to book_path(@book)
+        assert flash[:notice]
+      end
     end
   end
   

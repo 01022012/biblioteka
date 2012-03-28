@@ -3,3 +3,19 @@
 
 en:
   hello: "Hello world"
+  
+  books:
+    index:
+      search_button_placeholder: "Search by title"
+
+  flash:
+    books:
+      new:
+        error: "No book found by that ISBN"
+      create:
+        notice: "'%{title}' book created"
+      update:
+        notice: "Book saved"
+      destroy:
+        notice: "Book deleted"        
+    

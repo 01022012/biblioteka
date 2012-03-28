@@ -1,5 +1,5 @@
 <%= form_tag search_books_path, method: :get, id: 'search-form', remote: true, data: {type: :html} do %>
-  <%= search_field_tag :query, params[:query], placeholder: 'Search by title' %>
+  <%= search_field_tag :query, params[:query], placeholder: t('.search_button_placeholder') %>
   <%= submit_tag 'Search', class: 'btn-primary' %>
   <div>
     <%= query_by_radio_tag :title %>
