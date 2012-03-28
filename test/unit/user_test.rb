@@ -11,4 +11,20 @@ class UserTest < ActiveSupport::TestCase
     
   end
   
+  context "serializing" do
+
+    setup do
+      @user = Factory(:user, email: 'info@eficode.fi', password_digest: 'aabbcc')
+    end
+
+    should "serialize email" do
+      assert_match /info@eficode.fi/, @user.to_json
+    end
+
+    should "not serialize password digest" do
+      assert_no_match /aabbcc/, @user.to_json
+    end
+
+  end
+
 end
