@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :authorize
+  before_filter :check_session_timeout
   before_filter :set_locale
   
   protected 
@@ -31,6 +32,15 @@ class ApplicationController < ActionController::Base
   
   def authorize
     redirect_to new_session_path if current_user.nil?
+  end
+  
+  def check_session_timeout
+    if session[:last_seen].nil? || session[:last_seen] > 15.minutes.ago
+      session[:last_seen] = Time.now
+    else
+      reset_session
+      redirect_to new_session_path
+    end
   end
   
   def set_locale
