@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
     
   validates :email, presence: true, uniqueness: true
 
+  def serializable_hash(options = {})
+    {id: id, email: email}
+  end
+  
 end

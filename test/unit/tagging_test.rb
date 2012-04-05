@@ -9,7 +9,7 @@ class TaggingTest < ActiveSupport::TestCase
     end
     
     should "not be able to add a second tagging for the same tag and book" do
-      new_tagging = Tagging.new(tag: @tagging.tag, book: @tagging.book)
+      new_tagging = Factory.build(:tagging, tag: @tagging.tag, book: @tagging.book)
       
       assert !new_tagging.valid?
     end

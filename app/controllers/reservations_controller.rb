@@ -2,7 +2,8 @@ class ReservationsController < ApplicationController
   
   def create
     @book = Book.find(params[:book_id])
-    @reservation = @book.reservations.new(user: current_user)
+    @reservation = @book.reservations.new
+    @reservation.user = current_user
     if @reservation.save
       UserMailer.reservation_confirmation(current_user, @book).deliver
       flash[:notice] = "Book reserved"

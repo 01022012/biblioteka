@@ -9,6 +9,8 @@ class Book < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
   
+  attr_accessible :title, :authors, :isbn, :description, :cover_url
+  
   def reservation
     self.reservations.where(state: 'reserved').first
   end
