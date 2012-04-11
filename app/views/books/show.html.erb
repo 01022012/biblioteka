@@ -9,11 +9,11 @@
       </div>
       <div class="span5">
         <p>
-        	by <%= @book.authors %>
+         by <%= @book.authors %>
         </p>
 
         <p>
-        	ISBN: <%= @book.isbn %>
+         ISBN: <%= @book.isbn %>
         </p>
 
         <div id="taggings-container">
@@ -38,7 +38,7 @@
 
     
     <p>
-    	<%= @book.description %>
+     <%= @book.description %>
     </p>
 
     <%= link_to "Edit", edit_book_path(@book), class: 'btn' %>
@@ -56,8 +56,26 @@
   </div>
 </div>
   
+  <div class="comment-box">
+  	<div id="comment-links">
+  		<%= render partial: "comment_links", locals: {book: @book, comment: @book_comment} %>
+  	</div>
+    </div>
+  <div class="commentant">
+   <% if @book.comments.any? %>
+      <h3>Comments (<%= @book.comments.count %>)</h3>
+      <ol class="commenting">
+        <%= render @comments %>
+        
+      </ol>
+      <%= will_paginate @comments %>
+      <!--%= @comments %-->
+    <% end %>
+  </div>
 
 
 <p>
   <%= link_to "Back to list", books_path %>
 </p>
+<div id="comment-form" style="display: none;">
+</div>

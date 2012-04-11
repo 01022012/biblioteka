@@ -1,0 +1,18 @@
+<%= form_for [@book, @comment], remote: remote do |f| %>
+
+  <% unless @comment.errors.empty? %>
+    <h2>Failed create comment on book</h2>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <div>
+     <%= f.text_field :content, :placeholer=> 'Enter your comment' %>
+  </div>
+
+  <%= f.submit "Save" %>
+  or
+  <%= link_to "Cancel", book_path(@book) %>
+
+<% end %>

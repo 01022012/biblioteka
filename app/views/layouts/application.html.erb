@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Library</title>
+  <title>Biblioteka</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+   <script type="text/javascript" src="http://use.typekit.com/epv8kbn.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+   <%= auto_discovery_link_tag :atom, feed_path %>
 </head>
 <body>
-  
-  <div class="container main">
-    
-    <div data-pjax-container>
-      <%= render partial: 'navbar' %>
-      <%= render partial: 'flash', locals: {flash: flash} %>
-      <%= yield %>
-    </div>
-    
-  </div>
+<div id="full" style="width:100%; background-color:#DB9DFA; height:100px">
 
+  	<div class="container" style="margin-bottom:10px">
+		
+
+<!-- TOP BAR -->
+
+		<%= render "application/header" %>
+<!-- MAIN CONTENT -->
+
+			<div class="main-content row">
+				<div class="span12 content-area">
+					<div data-pjax-container>
+					     <%= render partial: 'navbar' %>
+					     <%= render partial: 'flash', locals: {flash: flash} %>
+
+						  <%= yield %>
+ 							   </div> <!-- main content area-->
+
+				</div><!-- .content-area -->
+<!-- 				NAVIGATION -->
+
+				<div class="span4 faux-height">
+
+				<!--div class="span4 sidebar" style="margin-left:0px"-->
+				
+					<div class="sign-in-container">
+					
+							<%= yield :sign_in %>
+					</div>
+					<div id="add-activity-container" style="min-height:180px;">What Eficodeans are saying about all or randomly selected books 
+					<%= yield :eficodeans %>
+					</div>
+					<div id="carousee" style="margin-bottom: 4px">
+					<a class="btn" href="<%= root_path %>">#home</a>
+					<a class="btn" href="<%= %>"">#popular</a>
+					<a class="btn" href="<%= %>"">#featured</a>
+					<a class="btn" href="<%= %>"">#new</a>
+					<a class="btn" href="<%= %>"">#book of the day</a>
+					</div>
+					<!--/div><!-- span4 sidebar -->
+				<div class="atom" style="position:static; top: 450px; margin-left: 30px;">
+					<a class="btn" href="<%= feed_path %>"><%= image_tag("/assets/rss.gif", {:alt => 'Atom feed', :class=>"feed", :width=> "50px"}) %><br/>Subscribe</a>
+				</div>
+			</div>
+				
+			</div><!-- main-content row -->
+
+		</div><!-- /container -->
+		
+		<%= render "application/footer" %>
+</div>
 </body>
 </html>
+
+
+

@@ -1,0 +1,24 @@
+<% content_for :sign_in do %>
+ <h1>Email Recovery</h1>
+
+<%= form_tag "/passwords/new" do %>
+
+  <fieldset>
+    <div class="clearfix">
+       <div class="input">
+        <%= text_field_tag :email, params[:email], :placeholder=>"Your Email address" %>
+      </div>
+    </div>
+  </fieldset>
+    
+  <div class="actions">
+    <%= submit_tag "Submit", class: 'btn btn primary btn-large' %>
+  </div>
+
+	<div class="sign-in-links">
+
+			<%= link_to 'Cancel', root_path %>
+		</div>
+<% end %>
+<% end %>
+ 

@@ -1,0 +1,14 @@
+require 'test_helper'
+
+class CommentTest < ActiveSupport::TestCase
+
+  setup do
+    @new_comment = Factory.build(:comment)
+  end
+  
+  should validate_presence_of(:book_id)
+  should validate_presence_of(:user_id)
+  should validate_presence_of(:content)
+  
+  
+end

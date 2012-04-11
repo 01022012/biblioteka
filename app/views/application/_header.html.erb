@@ -1,0 +1,28 @@
+	<div class="top-bar row">
+
+		<div class="span4">
+			<a href="">
+				<%= link_to image_tag("eficode_logo.png"), root_path %>
+			</a>
+		</div><!-- span4 -->
+	
+   				 <h1 id="teka" style="width: 800px; height: 0px;">Biblioteka</h1>
+					 <!-- main content area-->
+
+			<!--li><a href="" class="location">Helsinki</a></li-->
+			<ul class="user-menu pull-right" style="width: 555px;">
+				<% if current_user %>
+			<li><!--%= link_to "My Profile", profile_path(current_user.id) %--></li>
+			<li><%= link_to "My Reservations", new_user_path %></li>
+			<li><%= link_to "My Biblioteka", new_user_path %></li>
+			<li><%= link_to "Log out", sign_out_path %></li>
+					<% else %>
+			<li><!--%= link_to "Sign up", new_user_path %--></li> 
+			<li><!--%= link_to "Log in", new_session_path %--></li>
+					<% end %>
+			
+		<!-- <li><a href="" class="user">user name</a></li> -->
+			</ul>
+		 <div id="headerLine"></div>
+	</div><!-- top-bar row -->
+

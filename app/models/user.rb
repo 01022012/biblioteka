@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
     {id: id, email: email}
   end
   
+  def feed
+    Comment.where("user_id = ?", id)
+    
+  end
 end

@@ -5,11 +5,13 @@ class Book < ActiveRecord::Base
   
   validates_with IsbnValidator
   
+  belongs_to :category
   has_many :reservations
+  has_many :comments
   has_many :taggings
   has_many :tags, through: :taggings
   
-  attr_accessible :title, :authors, :isbn, :description, :cover_url
+  attr_accessible :title, :authors, :isbn, :description, :cover_url, :category_id
   
   def reservation
     self.reservations.where(state: 'reserved').first
@@ -17,13 +19,15 @@ class Book < ActiveRecord::Base
   
   def tag_with(tag_name)
     if tags.where(name: tag_name).empty?
-      tag = Tag.find_or_create_by_name(tag_name)
+      tag = Tag.find_or_create_by_name(tag_name.downcase)
       tags << tag
       tag
     else
       nil
     end
   end
+  
+  
   
   def self.search_by_isbn(value)
     self.where(isbn: value)

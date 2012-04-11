@@ -1,0 +1,22 @@
+    <div class="hero-unit">
+    
+  <% if @books_by_cats.size > 0 %>
+  <h1>Total of <%= @books_by_cats.size %> Found</h1>
+  <% @books_by_cats.each do |book| %>
+      <div class="list-1" style="width:80px; border:2px solid; float:left; margin-top:10px">
+	<%= link_to book.title, book_path(book) %>
+      </div>
+  <% end %>
+ <div id="listed" style="padding:2px;"><br /><p>Something isn't listed?</p><br />
+    <%= link_to 'Add', new_book_path, :class=>"btn btn-primary btn-large"  %>
+ </div>
+<% else %>
+    <p>No books found!</p>
+    <%= link_to 'Add', new_book_path, :class=>"btn btn-primary btn-large" %>
+
+<% end %>
+
+<%= link_to 'Return', root_path %>
+ 
+ 
+ </div>

@@ -13,6 +13,7 @@ class BookTest < ActiveSupport::TestCase
     end
     
     should have_many(:reservations)
+    should have_many(:comments)
 
     should validate_presence_of   :title
     should validate_uniqueness_of :title

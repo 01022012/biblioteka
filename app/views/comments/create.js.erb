@@ -1,0 +1,8 @@
+$('#comment-form').hide();
+$('.commentant').html("<%=j render partial: "comments/comment", locals: {comment: @comment} %>");
+$('#comment-links').html('<%=j render partial: "books/comment_links", locals: {book: @book, comment: @comment} %>');
+
+
+
+
+

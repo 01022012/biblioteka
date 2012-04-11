@@ -1,0 +1,35 @@
+<!--% content_for :sign_in do %-->
+<h1>Add Category</h1>
+
+<%= form_for @category do |f| %>
+
+  <% unless @category.errors.empty? %>
+    <div class="alert-message block-message error">
+      <h2>Please check the following information</h2>
+      <ul>
+        <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <fieldset>
+    <div class="clearfix">
+ 
+      <div class="input">
+        <%= f.text_field :name, :placeholder=>"Category Name" %>
+      </div>
+    </div>
+    
+  <div class="actions">    
+   <%= f.submit "Save", class: 'btn btn primary btn-large'%>
+  </div>
+
+<% end %>
+<div class="sign-in-links">
+			<%= link_to 'Cancel', root_path %><br /><br />
+			
+		</div>
+<!--% end% -->
+ 

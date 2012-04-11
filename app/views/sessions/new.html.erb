@@ -1,24 +1,29 @@
-<h1>Log In</h1>
+<% content_for :sign_in do %>
+ <h1>Sign in</h1>
 
 <%= form_tag session_path do %>
 
   <fieldset>
     <div class="clearfix">
-      <label>Email:</label>
-      <div class="input">
-        <%= text_field_tag :email, params[:email] %>
+       <div class="input">
+        <%= text_field_tag :email, params[:email], :placeholder=>"Your Email address" %>
       </div>
     </div>
     <div class="clearfix">
-      <label>Password:</label>
-      <div class="input">
-        <%= password_field_tag :password %>
+     <div class="input">
+        <%= password_field_tag 'password',"Your password" %>
       </div>
     </div>
   </fieldset>
     
   <div class="actions">
-    <%= submit_tag "Log in", class: 'btn primary' %>
+    <%= submit_tag "Log in", class: 'btn btn-large' %>
   </div>
 
+	<div class="sign-in-links">
+			<%= link_to 'Forgot your password?', passwords_new_path %><br /><br />
+			<%= link_to 'Sign up for free', new_user_path %>
+		</div>
 <% end %>
+<% end %>
+ 

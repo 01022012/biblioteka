@@ -1,0 +1,18 @@
+<div id="list" style="padding-left: 400px; margin-top: 0px;">
+<% if @categories.size > 0 %>
+  <dl>
+  <% @categories.each do |category| %>
+      <h1 class="list-h1"><%= link_to category.name, books_in_category_path(category.id) %></h1><hr />
+  <% end %>
+  </dl>
+<% else %>
+    <h1 class="list-h1"><%= link_to 'Leisure', tag_path(9) %></h1><hr />
+    <h1 class="list-h1"><%= link_to 'Web development', tag_path(4) %></h1><hr />
+    <h1 class="list-h1"><%= link_to 'Systems & Networks', tag_path(6) %></h1><hr />
+    <h1 class="list-h1"><%= link_to 'Databases', tag_path(5) %></h1><hr />
+    <h1 class="list-h1"><%= link_to 'Sales & mgt', tag_path(10) %></h1><hr />
+
+<% end %>
+
+</div>
+ 

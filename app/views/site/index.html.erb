@@ -1,7 +1,6 @@
-<h1>Book Library</h1>
-<p>
-  Welcome to our library!
-</p>
-<p>
-  We will open in 5 weeks.
-</p>
+    <div class="hero-unit">
+    <h1>What do you feel like reading today?</h1>
+    <p>Start by picking a category</p>    
+ 	</div>
+
+<%= render partial: 'list', locals: {categories: @categories} %>

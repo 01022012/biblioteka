@@ -17,6 +17,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'json'
 gem 'isbn_validator', :git => 'git://github.com/Eficode/isbn_validator.git'
 gem 'http_accept_language'
+gem 'will_paginate', '>= 3.0.pre'
 
 # Gems used only for assets and not required
 # in production environments by default.

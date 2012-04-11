@@ -13,5 +13,10 @@ class UserMailer < ActionMailer::Base
     @book = book
     mail(:to => "#{user.email}", :subject => "#{book.title} book reservation")
   end
+  
+   def email_recovery(user)
+    @user = user  
+    mail(:to => "#{user.email}", :subject => "password recovery")
+  end
 
 end

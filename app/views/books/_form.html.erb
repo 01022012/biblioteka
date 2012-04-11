@@ -8,7 +8,13 @@
       <% end %>
     </div>
   <% end %>
-
+<fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="category_id">Book Category</label>
+      <div class='controls'>
+        <%= f.select :category_id, @categories %>
+      </div>
+  </fieldset>
   <fieldset>
     <div class='control-group'>
       <label class='control-label' for="title">Title</label>
